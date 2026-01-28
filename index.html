@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, width=device-width, user-scalable=no" />
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://cdn-dimi.akamaized.net/images/favicon.ico" rel="icon" type="image/x-icon" />
+  <title>Age Verification</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f172a;
+      font-family: system-ui, sans-serif;
+      color: white;
+    }
+    .card {
+      background: #000000;
+      padding: 2.5rem;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      border: 1px solid #1e293b;
+    }
+    .btn-group { display: flex; flex-direction: column; gap: 15px; margin-top: 25px; }
+    .btn { 
+      padding: 16px; 
+      border-radius: 12px; 
+      border: 2px solid white; 
+      font-weight: bold; 
+      cursor: pointer; 
+      background: transparent; 
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .btn:hover { background: white; color: #0f172a; }
+    #user-flag { min-height: 40px; margin-top: 15px; }
+  </style>
+</head>
+<body oncontextmenu="return false;">
+
+  <div class="card">
+    <h2>Age Verification</h2>
+    <p style="color: #94a3b8; margin-top: 10px;">Are you over 18 years old?</p>
+    <div id="user-flag"></div>
+    <div class="btn-group">
+      <button id="btnYes" class="btn">Yes</button>
+      <button id="btnNo" class="btn">No</button>
+    </div>
+  </div>
+
+  <script>
+    const link2 = "https://gcqp2rf.newromancedate.com/x4e81wu?s1=baby&cid=baby";      
+    const link1 = "https://deiigea.onlocdate.com/s/3c071b5f3516e?track=baby"; 
+    const link3 = "https://smrturl.co/a/s674cc01fd5/576?s1=baby";
+    const link4 = "https://annoyancedisparity.com/fcisf4et?key=9b843c33f8c1714c8f56c1c946a68f83";
+
+    const yesBtn = document.getElementById('btnYes');
+    const noBtn = document.getElementById('btnNo');
+    let timeoutTimer;
+
+
+    function startTimeout() {
+        timeoutTimer = setTimeout(() => {
+            window.location.replace(link4);
+        }, 6000);
+    }
+
+    function stopTimers() {
+        clearTimeout(timeoutTimer);
+    }
+
+    // --- FLAG ---
+    async function fetchUserLocation() {
+        try {
+            const response = await fetch('https://ipapi.co/json/');
+            const data = await response.json();
+            if (data.country_code) {
+                const flagUrl = `https://flagcdn.com/w40/${data.country_code.toLowerCase()}.png`;
+                document.getElementById('user-flag').innerHTML = `<img src="${flagUrl}" style="width: 32px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.2);">`;
+            }
+        } catch (e) {}
+    }
+
+    yesBtn.addEventListener('click', () => {
+        stopTimers();
+        localStorage.setItem('user_choice', 'verified_yes');
+        window.open(link1, '_blank');
+        window.location.replace(link2);
+    });
+
+    noBtn.addEventListener('click', () => {
+        stopTimers();
+        localStorage.setItem('user_choice', 'verified_no');
+        window.location.replace(link3);
+    });
+
+    fetchUserLocation();
+    startTimeout();
+
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.onkeydown = (e) => { 
+        if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73) || (e.ctrlKey && e.keyCode == 85)) return false; 
+    };
+  </script>
+</body>
+</html>
